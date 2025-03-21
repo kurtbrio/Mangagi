@@ -1,8 +1,11 @@
 @import "tailwindcss";
-
 * {
   transition: background-color 0.3s ease-in, color 0.3s ease-in;
   animation: fade-in 750ms ease-in;
+}
+
+button:hover {
+  @apply cursor-pointer;
 }
 
 @keyframes fade-in {

@@ -1,14 +1,13 @@
 import React, { createContext, useEffect, useReducer } from "react";
 
-export const MangaContext = createContext();
+const MangaContext = createContext();
 
 // API
 const baseUrl = "https://api.jikan.moe/v4";
 
-// action
+// actions
 const GET_TOP_MANGA = "GET_TOP_MANGA";
 const LOADING = "LOADING";
-const GET_PICTURES = "GET_PICTURES";
 
 // initial state
 const initialState = {
@@ -22,8 +21,6 @@ const reducer = (state, action) => {
     case "LOADING":
       return { ...state, loading: true };
     case "GET_TOP_MANGA":
-      return { ...state, manga: action.payload, loading: false };
-    case "GET_PICTURES":
       return { ...state, manga: action.payload, loading: false };
     default:
       return state;
@@ -58,4 +55,4 @@ const MangaContextProvider = ({ children }) => {
   );
 };
 
-export default MangaContextProvider;
+export { MangaContextProvider, MangaContext };

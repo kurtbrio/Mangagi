@@ -1,15 +1,27 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Loader from "../components/Loader";
+// pages
+import Spotlight from "./Spotlight";
 import TopManga from "./TopManga";
-import { MangaContext } from "../context/MangaContext";
 
 const Home = () => {
-  const { loading } = useContext(MangaContext);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 2500);
+  });
 
   return (
     <>
       <main className="max-w-screen max-h-screen">
-        {loading ? <Loader /> : <TopManga />}
+        {loading ? (
+          <Loader />
+        ) : (
+          <>
+            <Spotlight />
+            <TopManga />
+          </>
+        )}
       </main>
     </>
   );

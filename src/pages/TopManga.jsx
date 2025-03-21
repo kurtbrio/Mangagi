@@ -4,13 +4,13 @@ import Card from "../components/Card";
 
 const TopManga = () => {
   const { manga } = useContext(MangaContext);
-  console.log(manga);
 
   const ITEMS_PER_PAGE = 5;
   const totalPages = Math.ceil(manga.length / ITEMS_PER_PAGE);
 
   const [index, setIndex] = useState(0);
 
+  // handle carousel
   const handleCarousel = (direction) => {
     setIndex((prev) => {
       if (direction === "NEXT") return (prev + 1) % totalPages;
@@ -23,9 +23,9 @@ const TopManga = () => {
   const end = start + ITEMS_PER_PAGE;
 
   return (
-    <section>
+    <section className="px-10">
       <h1 className="font-bold !text-xl sm:!text-2xl">Top Manga</h1>
-      <div className="flex flex-col">
+      <div className="flex flex-col pt-2.5">
         <ul className="grid grid-cols-5 gap-2 justify-center items-center h-[275px]">
           {manga.slice(start, end).map((manga, index) => (
             <Card manga={manga} key={index} />
@@ -41,6 +41,7 @@ const TopManga = () => {
           <ul className="flex gap-1">
             {Array.from({ length: totalPages }, (v, i) => (
               <li
+                key={i}
                 className={`w-5 h-5  rounded-full ${
                   index === i ? "bg-gray-400" : "bg-gray-200"
                 }`}
