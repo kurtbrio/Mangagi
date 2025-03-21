@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+* {
+  transition: background-color 0.3s ease-in, color 0.3s ease-in;
+  animation: fade-in 750ms ease-in;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
