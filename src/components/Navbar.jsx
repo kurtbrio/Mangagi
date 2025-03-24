@@ -11,7 +11,7 @@ const Navbar = () => {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
-    <nav className="w-screen h-fit px-2.5 py-5 flex items-center justify-around gap-5">
+    <nav className="fixed w-screen h-fit px-2.5 py-5 flex items-center justify-around gap-5 bg-none z-999">
       <h1 className="!text-4xl font-bold">Mangagi</h1>
       <div className="hidden sm:flex items-center justify-between w-[80%]">
         <form className="flex items-center relative">

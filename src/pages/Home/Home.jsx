@@ -5,7 +5,7 @@ import Spotlight from "./Spotlight";
 const Home = () => {
   return (
     <>
-      <main className="max-w-screen max-h-screen">
+      <main className="max-w-screen overflow-x-hidden">
         <Spotlight />
       </main>
     </>
