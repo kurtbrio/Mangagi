@@ -1,18 +1,7 @@
-import React, {
-  createContext,
-  useCallback,
-  useEffect,
-  useReducer,
-} from "react";
+import React, { createContext, useReducer } from "react";
+import { useSearch } from "../custom-hooks/useSearch";
 
-const SearchContext = createContext();
-
-// API
-const baseUrl = "https://api.jikan.moe/v4/manga";
-
-// actions
-const LOADING = "LOADING";
-const SET_RESULTS = "SET_RESULTS";
+export const SearchContext = createContext();
 
 // initial state
 const initialState = {
@@ -25,9 +14,11 @@ const initialState = {
   order_by: "",
   sort: "desc",
   start_date: "",
+  end_date: "",
   results: [],
 };
 
+// reducer
 const reducer = (state, action) => {
   switch (action.type) {
     case "LOADING":
@@ -48,6 +39,8 @@ const reducer = (state, action) => {
       return { ...state, sort: action.payload };
     case "SET_START_DATE":
       return { ...state, start_date: action.payload };
+    case "SET_END_DATE":
+      return { ...state, end_date: action.payload };
     case "SET_RESULTS":
       return { ...state, results: action.payload, loading: false };
     default:
@@ -58,82 +51,13 @@ const reducer = (state, action) => {
 const SearchContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const fetchManga = useCallback(async () => {
-    dispatch({ type: LOADING });
-
-    const params = new URLSearchParams({
-      q: state.q,
-      type: state.type,
-      score: state.score,
-      status: state.status,
-      genre: state.genre,
-      order_by: state.order_by,
-      sort: state.sort,
-      start_date: state.start_date,
-    });
-
-    params.forEach((value, key) => {
-      if (!value) params.delete(key);
-    });
-
-    try {
-      const response = await fetch(`${baseUrl}?${params}`);
-      if (!response.ok) throw new Error("Error fetching manga data");
-      const data = await response.json();
-      dispatch({ type: SET_RESULTS, payload: data.data });
-    } catch (error) {
-      console.log(error);
-    }
-  }, [
-    state.q,
-    state.type,
-    state.score,
-    state.status,
-    state.genre,
-    state.order_by,
-    state.sort,
-    state.start_date,
-  ]);
-
-  // fetch search
-  useEffect(() => {
-    const debounceTimer = setTimeout(() => {
-      if (state.q.length > 2) fetchManga();
-    }, 1000);
-
-    return () => clearTimeout(debounceTimer);
-  }, [state.q, fetchManga]);
-
-  // fetch sort
-  useEffect(() => {
-    const hasChanged =
-      state.type !== initialState.type ||
-      state.score !== initialState.score ||
-      state.status !== initialState.status ||
-      state.genre !== initialState.genre ||
-      state.order_by !== initialState.order_by ||
-      state.sort !== initialState.sort ||
-      state.start_date !== initialState.start_date;
-
-    if (hasChanged) {
-      fetchManga();
-    }
-  }, [
-    state.type,
-    state.score,
-    state.status,
-    state.genre,
-    state.order_by,
-    state.sort,
-    state.start_date,
-    fetchManga,
-  ]);
+  useSearch(state, dispatch);
 
   return (
-    <SearchContext.Provider value={{ ...state, dispatch }}>
+    <SearchContext.Provider value={{ state, dispatch }}>
       {children}
     </SearchContext.Provider>
   );
 };
 
-export { SearchContext, SearchContextProvider };
+export default SearchContextProvider;

@@ -1,16 +1,14 @@
 import React from "react";
-import { MangaContextProvider } from "./MangaContext";
-import { ThemeContextProvider } from "./ThemeContext";
-import { SearchContextProvider } from "./SearchContext";
+// contexts
+import ThemeContextProvider from "./ThemeContext";
+import SearchContextProvider from "./SearchContext";
 
 const ContextProvider = ({ children }) => {
   return (
     <ThemeContextProvider>
-      <SearchContextProvider>
-        <MangaContextProvider>{children}</MangaContextProvider>
-      </SearchContextProvider>
+      <SearchContextProvider>{children}</SearchContextProvider>
     </ThemeContextProvider>
   );
 };
 
-export { ContextProvider };
+export default ContextProvider;

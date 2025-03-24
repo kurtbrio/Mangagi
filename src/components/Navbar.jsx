@@ -1,12 +1,14 @@
 import React, { useContext, useState } from "react";
 import { ThemeContext } from "../context/ThemeContext";
 import { SearchContext } from "../context/SearchContext";
+import SearchResult from "./SearchResult";
 
 const Navbar = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
-  const { q, result, dispatch } = useContext(SearchContext);
+  const { state, dispatch } = useContext(SearchContext);
+  const { loading, q, results } = state;
 
-  console.log(q);
+  const [isFocused, setIsFocused] = useState(false);
 
   return (
     <nav className="w-screen h-fit px-2.5 py-5 flex items-center justify-around gap-5">
@@ -15,19 +17,27 @@ const Navbar = () => {
         <form className="flex items-center relative">
           <input
             type="text"
-            value={q}
             placeholder="Search manga..."
-            className="w-96 h-12 text-gray-500 !text-xl p-5"
+            value={q}
+            className="min-w-72  h-12 text-gray-500 !text-xl p-5"
             onChange={(e) =>
               dispatch({ type: "SET_QUERY", payload: e.target.value })
             }
+            onFocus={() => setIsFocused(true)}
+            onBlur={() => setTimeout(() => setIsFocused(false), 200)}
           />
           <p className="absolute text-xl top-0 right-5 translate-x-1/2 translate-y-1/2">
             <a href="/filter">
               <i class="bx bxs-filter-alt"></i>
             </a>
           </p>
+
+          {/* display search result */}
+          {isFocused && q.length > 2 && (
+            <SearchResult data={results} isLoading={loading} />
+          )}
         </form>
+
         <ul className="flex gap-2">
           <li className="text-white bg-blue-400 rounded-full ">
             <a

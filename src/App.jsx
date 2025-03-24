@@ -2,9 +2,9 @@ import React from "react";
 // route
 import { Routes, Route } from "react-router-dom";
 // context
-import { ContextProvider } from "./context/ContextProvider";
+import ContextProvider from "./context/ContextProvider";
 // pages
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 import Navbar from "./components/Navbar";
 
 const App = () => {
