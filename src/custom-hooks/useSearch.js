@@ -33,6 +33,7 @@ export const useSearch = (state, dispatch) => {
     state.order_by,
     state.sort,
     state.start_date,
+    state.end_date,
   ]);
 
   // fetch on search
