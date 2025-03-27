@@ -1,10 +1,31 @@
 @import "tailwindcss";
 /* light mode */
 :root {
+  /* font */
+  --text-clr: red;
+  --text-hover: ;
+  --h1-clr: #ffbade;
+
+  /* bg */
+  --mainbg-clr: ;
+
+  /* button */
+  --primary-btn: ;
+  --primary-btn-bg: ;
 }
 
 /* dark mode */
 .dark {
+  /* font */
+  --text-clr: #fff;
+  --text-hover: ;
+
+  /* bg */
+  --mainbg-clr: #3a3951;
+
+  /* button */
+  --primary-btn: #3a3951;
+  --primary-btn-bg: #ffbade;
 }
 
 * {
@@ -12,6 +33,27 @@
   animation: fade-in 750ms ease-in;
 }
 
-button:hover {
+/* global */
+button:hover,
+a:hover {
   @apply cursor-pointer;
+}
+
+h1 {
+  color: var(--h1-clr);
+  font-weight: 500;
+}
+
+h2,
+h3,
+h4,
+h5,
+p,
+a {
+  color: var(--text-clr);
+}
+
+button {
+  color: var(--primary-btn);
+  background-color: var(--primary-btn-bg);
 }
