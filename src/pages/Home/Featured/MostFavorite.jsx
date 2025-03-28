@@ -49,7 +49,7 @@ const MostFavorite = () => {
                 </li>
                 <li className="line-clamp-1">{manga.title_japanese}</li>
                 <li>{manga.status}</li>
-                <li className="highlight w-full text-center rounded-full whitespace-nowrap">
+                <li className="highlight  text-center rounded-full whitespace-nowrap">
                   Chapters: {manga.chapters || 0}
                 </li>
               </ul>

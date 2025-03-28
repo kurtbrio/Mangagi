@@ -13,7 +13,7 @@ const MostPopular = () => {
         const data = await fetchManga({
           limit: 5,
           type: "manga",
-          sort: "desc",
+          sort: "asc",
           order_by: "popularity",
         });
         setResults(data.data);
