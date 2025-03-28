@@ -1,17 +1,27 @@
+/* google font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* tailwind */
 @import "tailwindcss";
+
 /* light mode */
 :root {
   /* font */
-  --text-clr: red;
+  --font-primary: "Poppins", sans-serif;
+  --text-clr: #3a3951;
   --text-hover: ;
   --h1-clr: #ffbade;
 
   /* bg */
-  --mainbg-clr: ;
+  --main-bg-clr: #f5f5f7;
+  --spotlight-bg: rgb(128, 128, 128);
+  --input-bg: #3a3951;
 
   /* button */
-  --primary-btn: ;
-  --primary-btn-bg: ;
+  --primary-btn: #3a3951;
+  --primary-btn-bg: #ffbade;
+  --secondary-btn: #fff;
+  --secondary-btn-bg: hsl(243, 17%, 27%, 0.8);
 }
 
 /* dark mode */
@@ -21,16 +31,29 @@
   --text-hover: ;
 
   /* bg */
-  --mainbg-clr: #3a3951;
+  --main-bg-clr: #3a3951;
+  --spotlight-bg: #fff;
+  --input-bg: #fff;
 
   /* button */
-  --primary-btn: #3a3951;
-  --primary-btn-bg: #ffbade;
+  --secondary-btn: #3a3951;
+  --secondary-btn-bg: rgba(255, 255, 255, 0.8);
 }
 
 * {
+  font-family: var(--font-primary);
   transition: background-color 0.3s ease-in, color 0.3s ease-in;
   animation: fade-in 750ms ease-in;
+}
+
+body {
+  background-color: var(--main-bg-clr);
+}
+
+input {
+  background-color: var(--input-bg);
+  color: var(--secondary-btn);
+  border-radius: 10px;
 }
 
 /* global */
@@ -53,7 +76,36 @@ a {
   color: var(--text-clr);
 }
 
-button {
+/* reusable */
+.primary-btn {
   color: var(--primary-btn);
   background-color: var(--primary-btn-bg);
+}
+
+.secondary-btn {
+  color: var(--secondary-btn);
+  background-color: var(--secondary-btn-bg);
+}
+
+.highlight {
+  color: #3a3951;
+  background-color: #ffbade;
+}
+
+/* unique */
+#spotlight {
+  background-color: var(--spotlight-bg);
+}
+
+#spotlight::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    var(--main-bg-clr),
+    transparent,
+    var(--main-bg-clr)
+  );
+  background-color: hsl(243, 17%, 27%, 0.4);
 }

@@ -6,6 +6,8 @@ export const SearchContext = createContext();
 // initial state
 const initialState = {
   loading: false,
+  page: 1,
+  limit: 25,
   q: "",
   type: "manga",
   score: "",
@@ -23,6 +25,8 @@ const reducer = (state, action) => {
   switch (action.type) {
     case "LOADING":
       return { ...state, loading: true };
+    case "SET_PAGE":
+      return { ...state, page: action.payload };
     case "SET_QUERY":
       return { ...state, q: action.payload };
     case "SET_TYPE":

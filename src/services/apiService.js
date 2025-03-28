@@ -7,7 +7,7 @@ export const fetchManga = async (params) => {
     const response = await fetch(`${baseUrl}?${urlParams}`);
     if (!response.ok) throw new Error("Error fetching manga data");
     const data = await response.json();
-    return data.data;
+    return data;
   } catch (error) {
     console.log(error);
   }

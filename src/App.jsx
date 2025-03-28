@@ -1,6 +1,6 @@
 import React from "react";
 // route
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 // context
 import ContextProvider from "./context/ContextProvider";
 // pages
@@ -13,7 +13,8 @@ const App = () => {
       <ContextProvider>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Navigate to="/home" replace />} />
+          <Route path="/home" element={<Home />} />
         </Routes>
       </ContextProvider>
     </>

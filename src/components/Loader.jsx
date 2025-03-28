@@ -3,7 +3,7 @@ import loaderGif from "../assets/images/loader.gif";
 
 const Loader = () => {
   return (
-    <div className="w-screen h-screen flex items-center justify-center">
+    <div className="w-full h-screen flex items-center justify-center">
       <div className="w-50 h-50 relative bg-gray-200 rounded-full overflow-hidden">
         <img
           src={loaderGif}
