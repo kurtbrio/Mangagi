@@ -6,7 +6,7 @@ import MostPopular from "./MostPopular";
 
 const Featured = () => {
   return (
-    <section className="h-fit w-screen grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-5 p-5 text-sm">
+    <section className="h-fit max-w-screen grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-5 text-sm overflow-hidden p-5">
       <TopScoring />
       <TopRanking />
       <MostFavorite />

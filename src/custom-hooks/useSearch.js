@@ -49,7 +49,7 @@ export const useSearch = (state, dispatch) => {
     if (state.q !== undefined && state.q.length > 2) {
       const debounceTimer = setTimeout(() => {
         fetchMangaData();
-      }, 500);
+      }, 1000);
 
       return () => clearTimeout(debounceTimer);
     }
@@ -70,7 +70,7 @@ export const useSearch = (state, dispatch) => {
     if (hasFilters) {
       const debounceTimer = setTimeout(() => {
         fetchMangaData();
-      }, 500);
+      }, 1000);
 
       return () => clearTimeout(debounceTimer);
     }

@@ -70,7 +70,7 @@ const Spotlight = () => {
               className="secondary-btn font-semibold py-2 px-4 text-lg rounded-full"
               href=""
             >
-              Detail <i class="bx bxs-chevron-right"></i>
+              Detail <i className="bx bxs-chevron-right"></i>
             </a>
           </div>
           <div
@@ -88,13 +88,13 @@ const Spotlight = () => {
               onClick={handleNext}
               className="secondary-btn mt-4 w-10 h-10 rounded-lg flex items-center justify-center"
             >
-              <i class="bx bx-chevron-right"></i>
+              <i className="bx bx-chevron-right"></i>
             </button>
             <button
               onClick={handlePrev}
               className="secondary-btn mt-4 w-10 h-10 rounded-lg flex items-center justify-center"
             >
-              <i class="bx bx-chevron-left"></i>
+              <i className="bx bx-chevron-left"></i>
             </button>
           </div>
         </>

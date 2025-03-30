@@ -9,7 +9,7 @@
   /* font */
   --font-primary: "Poppins", sans-serif;
   --text-clr: #3a3951;
-  --text-hover: ;
+  --text-hover: #ffbade;
   --h1-clr: #ffbade;
 
   /* bg */
@@ -28,7 +28,6 @@
 .dark {
   /* font */
   --text-clr: #fff;
-  --text-hover: ;
 
   /* bg */
   --main-bg-clr: #3a3951;
@@ -56,10 +55,19 @@ input {
   border-radius: 10px;
 }
 
+p {
+  color: var(--text-clr);
+}
+
+li {
+  color: var(--text-clr);
+}
+
 /* global */
 button:hover,
 a:hover {
-  @apply cursor-pointer;
+  cursor: cursor-pointer;
+  color: var(--text-hover);
 }
 
 h1 {
@@ -90,6 +98,7 @@ a {
 .highlight {
   color: #3a3951;
   background-color: #ffbade;
+  font-weight: 600;
 }
 
 /* unique */

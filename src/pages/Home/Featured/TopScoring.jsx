@@ -27,7 +27,7 @@ const TopScoring = () => {
   }, []);
 
   return (
-    <div className="h-full">
+    <div className="h-full mt-5">
       <h1 className="text-xl">Top Scoring</h1>
       {loading ? (
         <Loader />
@@ -41,21 +41,25 @@ const TopScoring = () => {
               <img
                 src={manga.images.jpg.image_url}
                 alt={manga.title}
-                className="w-1/3 sm:w-1/4 rounded-md object-cover"
+                className="w-24 sm:w-20 rounded-md object-cover"
               />
               <ul className="w-full flex flex-col gap-2.5 overflow-hidden">
                 <li className="line-clamp-1">
-                  {manga.title_english || manga.title}
+                  <a href="">{manga.title_english || manga.title}</a>
                 </li>
-                <li className="line-clamp-1">{manga.title_japanese}</li>
+                <li className="line-clamp-1">
+                  <a href="">{manga.title_japanese}</a>
+                </li>
                 <li>{manga.status}</li>
-                <li className="highlight w-full text-center rounded-full whitespace-nowrap">
+                <li className="highlight w-fit px-3 text-center rounded-full whitespace-nowrap">
                   Chapters: {manga.chapters || 0}
                 </li>
               </ul>
             </li>
           ))}
-          <a href="">View More.</a>
+          <a href="">
+            View More <i className="bx bxs-chevron-right"></i>
+          </a>
         </ul>
       )}
     </div>

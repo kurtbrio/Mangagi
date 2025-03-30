@@ -32,8 +32,8 @@ const Navbar = () => {
       className={`fixed w-screen h-fit px-2.5 py-2 flex items-center justify-around gap-5 z-999 transition-colors duration-300 ${
         isScrolled
           ? theme === "light"
-            ? "bg-white shadow-md"
-            : "bg-[#3a3951] shadow-md"
+            ? "bg-white/80 shadow-md"
+            : "bg-[#3a3951]/80 shadow-md"
           : "bg-none"
       }`}
     >
@@ -44,7 +44,7 @@ const Navbar = () => {
       >
         Mangagi
       </h1>
-      <div className="hidden sm:flex items-center justify-between w-[80%]">
+      <div className="hidden md:flex items-center justify-between w-[80%]">
         <form className="flex items-center relative">
           <input
             type="text"
