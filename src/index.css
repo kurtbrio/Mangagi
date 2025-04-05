@@ -11,32 +11,42 @@
   --text-clr: #3a3951;
   --text-hover: #ffbade;
   --h1-clr: #ffbade;
+  --search-clr: #fff;
 
   /* bg */
   --main-bg-clr: #f5f5f7;
   --spotlight-bg: rgb(128, 128, 128);
   --input-bg: #3a3951;
+  --search-bg: hsla(243, 17%, 27%, 0.8);
+  --filter-bg: rgba(0, 0, 0, 0.1);
+  --filter-query-bg: rgba(0, 0, 0, 0.1);
 
   /* button */
   --primary-btn: #3a3951;
   --primary-btn-bg: #ffbade;
   --secondary-btn: #fff;
   --secondary-btn-bg: hsl(243, 17%, 27%, 0.8);
+  --filter-btn-border: hsla(243, 17%, 27%, 0.1);
 }
 
 /* dark mode */
 .dark {
   /* font */
   --text-clr: #fff;
+  --search-clr: #3a3951;
 
   /* bg */
   --main-bg-clr: #3a3951;
   --spotlight-bg: #fff;
   --input-bg: #fff;
+  --search-bg: hsla(0, 0%, 100%, 0.8);
+  --filter-bg: rgba(255, 255, 255, 0.1);
+  --filter-query-bg: rgba(255, 255, 255, 0.1);
 
   /* button */
   --secondary-btn: #3a3951;
   --secondary-btn-bg: rgba(255, 255, 255, 0.8);
+  --filter-btn-border: hsla(0, 0%, 100%, 0.1);
 }
 
 * {
@@ -50,13 +60,9 @@ body {
 }
 
 input {
-  background-color: var(--input-bg);
+  background-color: var(--input-bg) !important;
   color: var(--secondary-btn);
   border-radius: 10px;
-}
-
-p {
-  color: var(--text-clr);
 }
 
 li {
@@ -66,7 +72,7 @@ li {
 /* global */
 button:hover,
 a:hover {
-  cursor: cursor-pointer;
+  cursor: pointer;
   color: var(--text-hover);
 }
 
@@ -84,6 +90,10 @@ a {
   color: var(--text-clr);
 }
 
+option {
+  background-color: var(--main-bg-clr);
+}
+
 /* reusable */
 .primary-btn {
   color: var(--primary-btn);
@@ -96,9 +106,25 @@ a {
 }
 
 .highlight {
-  color: #3a3951;
+  color: #3a3951 !important;
   background-color: #ffbade;
   font-weight: 600;
+}
+
+.filter-btn {
+  border: 1px solid var(--filter-btn-border);
+  background-color: var(--filter-query-bg);
+  @apply rounded-md text-xs w-fit px-2 py-1 font-semibold;
+}
+
+.filter-btn select,
+.filter-btn input {
+  color: #ffbade;
+  @apply text-[10px] ml-2.5 font-semibold;
+}
+
+.filter-btn input {
+  background-color: transparent !important;
 }
 
 /* unique */
@@ -117,4 +143,26 @@ a {
     var(--main-bg-clr)
   );
   background-color: hsl(243, 17%, 27%, 0.4);
+}
+
+#search {
+  background-color: var(--search-bg);
+  @apply rounded-b-lg divide-y divide-dashed;
+}
+
+#search * {
+  color: var(--search-clr) !important;
+}
+
+#search li:hover p:first-child {
+  color: var(--text-hover) !important;
+}
+
+#search li:hover {
+  background-color: var(--search-bg);
+}
+
+#filter {
+  background-color: var(--filter-bg);
+  color: var(--text-clr);
 }

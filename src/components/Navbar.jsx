@@ -37,20 +37,23 @@ const Navbar = () => {
           : "bg-none"
       }`}
     >
-      <h1
+      <a
+        href="/home"
         className={`text-4xl font-bold ${
-          theme === "light" ? "!text-[#3a3951]" : "!text-white"
+          theme === "light" ? "text-[#3a3951]" : "text-white"
         } `}
       >
         Mangagi
-      </h1>
+      </a>
       <div className="hidden md:flex items-center justify-between w-[80%]">
         <form className="flex items-center relative">
           <input
             type="text"
             placeholder="Search manga..."
             value={q}
-            className="min-w-72 h-10 font-medium text-md p-5"
+            className={`min-w-72 h-10 font-medium text-md p-5 ${
+              isFocused && "!rounded-none"
+            }`}
             onChange={(e) =>
               dispatch({
                 type: "SET_QUERY",

@@ -13,26 +13,26 @@ const SearchResult = ({ data = [], isLoading }) => {
           <Loader />
         </div>
       ) : (
-        <ul className="grid  items-center absolute top-full w-full max-h-60 overflow-y-scroll overflow-hidden p-5 bg-gray-600 rounded-b-lg">
+        <ul
+          className="grid items-center absolute top-full z-0 w-full max-h-60 overflow-y-scroll"
+          id="search"
+        >
           {sorted.map((manga, index) => (
             <li key={index}>
-              <a
-                href=""
-                className="grid grid-cols-3 p-2.5 border-b-1 !hover:text-[#ffbade]"
-              >
+              <a href="" className="flex p-2.5 ">
                 <img
                   src={manga.images.jpg.image_url}
                   alt={manga.title}
-                  className="w-20 h-full object-cover "
+                  className="w-14 h-full object-cover"
                 />
-                <div className="col-span-2 space-y-2 pl-5">
-                  <p className="whitespace-nowrap overflow-ellipsis overflow-hidden">
-                    {manga.title}
-                  </p>
-                  <p className="whitespace-nowrap text-sm">
-                    Status: {manga.status}
-                  </p>
-                  <p className="highlight font-semibold text-center rounded-full w-full line-clamp-1">
+                <div className=" space-y-3 pl-5">
+                  <div>
+                    <p className="line-clamp-1 font-semibold">{manga.title}</p>
+                    <p className="line-clamp-1 text-sm">
+                      Status: {manga.status}
+                    </p>
+                  </div>
+                  <p className="highlight font-semibold text-center rounded-full w-full line-clamp-1 !text-[#3a3951]">
                     Score: {manga.score || 0}
                   </p>
                 </div>
